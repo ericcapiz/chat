@@ -1,12 +1,14 @@
 const crypto = require('crypto');
 const {connect} = require('getstream');
 const bcrypt = require('bcrypt');
-const StreamChat = require('stream-chat');
+const StreamChat = require('stream-chat').StreamChat;
 const { Stream } = require('stream');
+
+require('dotenv').config();
 
 const api_key = process.env.STREAM_API_KEY;
 const api_secret = process.env.STREAM_API_SECRET;
-const api_id = process.env.STREAM_API_ID;
+const app_id = process.env.STREAM_API_ID;
 
 const login = async (req,res) =>{
     try {
