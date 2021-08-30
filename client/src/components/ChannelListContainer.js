@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {ChannelList, useChatContext} from 'stream-chat-react';
-import Cookies from 'universal-cookie';
+import React from 'react';
+import {ChannelList} from 'stream-chat-react';
+// import Cookies from 'universal-cookie';
 
 import {ChannelSearch, TeamChannelList, TeamChannelPreview} from './';
 import MessageIcon from '../assets/message.png';
