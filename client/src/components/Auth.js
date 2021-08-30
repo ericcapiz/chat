@@ -6,15 +6,31 @@ import signinImage from '../assets/signup.jpg';
 
 const cookies = new Cookies();
 
+const initialState = {
+    fullName: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    phoneNumber: '',
+    avatarURL: '',
+}
+
 const Auth = () => {
     const [isSignup, setIsSignUp] = useState(true);
+    const [form, setForm] = useState(initialState);
 
-    const handleChange = () =>{
-
+    const handleChange = (e) =>{
+        setForm({...form, [e.target.name]: e.target.value})
     }
 
     const switchMode = () =>{
         setIsSignUp((prevIsSignup) => !prevIsSignup)
+    }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log(form)
+
     }
 
     return (
@@ -22,11 +38,11 @@ const Auth = () => {
             <div className="auth__form-container_fields">
                 <div className="auth__form-container_fields-content">
                     <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
-                    <form onSubmit={()=>{}}>
+                    <form onSubmit={handleSubmit}>
                         {isSignup && (
                             <div className="auth__form-container_fields-content_input">
                                 <label htmlFor="fullName">Full Name:</label>
-                                <input name="fullname" type="text" placeholder="Full Name" onChange={handleChange} required />
+                                <input name="fullName" type="text" placeholder="Full Name" onChange={handleChange} required />
                             </div>
                         )}
                         <div className="auth__form-container_fields-content_input">
@@ -42,7 +58,7 @@ const Auth = () => {
                     {isSignup && (
                         <div className="auth__form-container_fields-content_input">
                             <label htmlFor="avatarURL">Avatar URL:</label>
-                            <input name="avatarURL" type="text" placeholder="Avatar URL" onChange={handleChange} required />
+                            <input name="avatarURL" type="text" placeholder="Avatar URL" onChange={handleChange}  />
                         </div>
                     )}
                     <div className="auth__form-container_fields-content_input">
@@ -55,6 +71,9 @@ const Auth = () => {
                             <input name="confirmPassword" type="password" placeholder="Confirm Password" onChange={handleChange} required />
                         </div>
                     )}
+                    <div className="auth__form-container_fields-content_button">
+                        <button>{isSignup ? "Sign Up" : "Sign In"}</button>
+                    </div>
                     </form>
                     <div className="auth__form-container_fields-account">
                         <p>
