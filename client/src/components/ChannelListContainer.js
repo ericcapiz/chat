@@ -11,7 +11,7 @@ const SideBar = ({ logout }) => (
     <div className="channel-list__sidebar">
         <div className="channel-list__sidebar__icon1">
             <div className="icon1__inner">
-                <img src={MessageIcon} alt="Hospital" width="30" />
+                <img src={MessageIcon} alt="message-icon" width="30" />
             </div>
         </div>
         <div className="channel-list__sidebar__icon2">
@@ -36,7 +36,7 @@ const customChannelMessagingFilter = (channels) => {
     return channels.filter((channel) => channel.type === 'messaging')
 }
 
-const ChannelListContent = ({isCreating, setIsCreating, setIsEditing,setCreateType}) => {
+const ChannelListContent = ({isCreating, setIsCreating, setIsEditing, setCreateType, setToggleContainer}) => {
     const {client} = useChatContext();
 
     const logout = () => {
@@ -69,10 +69,17 @@ const ChannelListContent = ({isCreating, setIsCreating, setIsEditing,setCreateTy
                             isCreating={isCreating} 
                             setIsCreating={setIsCreating} 
                             setIsEditing={setIsEditing} 
-                            setCreateType={setCreateType} />
+                            setCreateType={setCreateType}
+                            setToggleContainer={setToggleContainer} />
                         )} 
                          Preview={(previewProps)=>(
-                             <TeamChannelPreview {...previewProps} type="team" />
+                             <TeamChannelPreview 
+                                {...previewProps} 
+                                type="team" 
+                                setToggleContainer={setToggleContainer}
+                                setToggleContainer={setToggleContainer}
+                                setIsCreating={setIsCreating} 
+                                setIsEditing={setIsEditing} />
                          )}/>
                 <ChannelList 
                     filters={filters} 
@@ -84,10 +91,16 @@ const ChannelListContent = ({isCreating, setIsCreating, setIsEditing,setCreateTy
                             isCreating={isCreating} 
                             setIsCreating={setIsCreating} 
                             setIsEditing={setIsEditing} 
-                            setCreateType={setCreateType} />
+                            setCreateType={setCreateType}
+                            setToggleContainer={setToggleContainer} />
                         )} 
                          Preview={(previewProps)=>(
-                             <TeamChannelPreview {...previewProps} type="messaging" />
+                             <TeamChannelPreview 
+                                {...previewProps} 
+                                type="messaging" 
+                                setToggleContainer={setToggleContainer}
+                                setIsCreating={setIsCreating} 
+                                setIsEditing={setIsEditing}  />
                          )}/>
             </div>
         </>
