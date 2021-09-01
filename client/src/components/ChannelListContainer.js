@@ -77,7 +77,6 @@ const ChannelListContent = ({isCreating, setIsCreating, setIsEditing, setCreateT
                                 {...previewProps} 
                                 type="team" 
                                 setToggleContainer={setToggleContainer}
-                                setToggleContainer={setToggleContainer}
                                 setIsCreating={setIsCreating} 
                                 setIsEditing={setIsEditing} />
                          )}/>
